@@ -9,9 +9,8 @@ err=[]
 onlyerr=False
 flag=False
 index=-1
-id=0
+id=-1
 multi=[0,0,0,0]
-index=0
 
 def write_err():
     f=open('err.txt','a')
@@ -138,7 +137,7 @@ def show_multi():
 
 def chk1():
     global flag
-    if problems['正确答案'][id]=='A':
+    if 'A' in problems['正确答案'][id]:
         next_problem()
     elif flag==False:
         flag=True
@@ -146,7 +145,7 @@ def chk1():
 
 def chk2():
     global flag
-    if problems['正确答案'][id]=='B':
+    if 'B' in problems['正确答案'][id]:
         next_problem()
     elif flag==False:
         flag=True
@@ -154,12 +153,12 @@ def chk2():
 
 def chk3():
     global flag
-    if problems['正确答案'][id]=='C':
+    if 'C' in problems['正确答案'][id]:
         next_problem()
 
 def chk4():
     global flag
-    if problems['正确答案'][id]=='D':
+    if 'D' in problems['正确答案'][id]:
         next_problem()
     elif flag==False:
         flag=True
@@ -216,7 +215,7 @@ def check_muti():
         ans+='C'
     if multi[3]:
         ans+='D'
-    if ans==problems['正确答案'][id]:
+    if ans==str(problems['正确答案'][id]).strip():
         next_problem()
     elif flag==False:
         flag=True
@@ -258,6 +257,7 @@ for line in f:
 f.close()
 
 err=list(set(err))
+err.sort()
 
 f=open('err.txt','w')
 f.close()
